@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Animated, Text, View, TouchableOpacity} from 'react-native';
+import {Animated, Text, View, TouchableOpacity, Easing} from 'react-native';
 
 const FadeInView = props => {
   const [fadeAnim] = useState(new Animated.Value(-50)); // Initial value for opacity: 0
@@ -8,6 +8,7 @@ const FadeInView = props => {
     Animated.timing(fadeAnim, {
       toValue: -50,
       duration: 300,
+      easing: Easing.back(),
     }).start();
   };
 
@@ -18,6 +19,7 @@ const FadeInView = props => {
     Animated.timing(fadeAnim, {
       toValue: 50,
       duration: 300,
+      easing: Easing.cubic,
     }).start();
     id = setTimeout(fadeOut, 1000);
   };
